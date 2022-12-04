@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         user = User.find(username: params[:id])
         if user
             session[:user_id] = user.id
-            render json: user
+            render json: user, status: :created
         else
             render json: {error: "Not authorized"}, status: :unauthorized
         end
